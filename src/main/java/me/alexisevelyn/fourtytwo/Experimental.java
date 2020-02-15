@@ -12,7 +12,7 @@ public class Experimental {
 		((Player) sender).setSaturation(Float.MAX_VALUE);
     }
 	
-	public static void resetHealth(CommandSender sender, String message) {
+	public static void resetHealth(CommandSender sender) {
         ((Player) sender).setAbsorptionAmount(0.0);
 		
 		((Player) sender).setFoodLevel(20);
