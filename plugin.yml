@@ -1,0 +1,19 @@
+main: me.alexisevelyn.fourtytwo.Main
+name: 42
+version: 1.0
+api-version: 1.15
+author: Alexis Evelyn
+description: A Utility Library For Alexis' Plugins
+
+depend: []
+softdepend: []
+
+dummy: https://www.spigotmc.org/wiki/plugin-yml/
+
+commands:
+    42:
+      description: Say Hello
+      usage: /42
+      permission: 42.42
+      default: false
+      permission-message: You don't have the 42.42 permission.
