@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"me.alexisevelyn.fourtytwo","l":"Chat"},{"p":"me.alexisevelyn.fourtytwo","l":"Commands"},{"p":"me.alexisevelyn.fourtytwo","l":"Experimental"},{"p":"me.alexisevelyn.fourtytwo","l":"Main"},{"p":"me.alexisevelyn.fourtytwo","l":"Verbosity"}]
