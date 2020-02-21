@@ -24,7 +24,7 @@ public enum Verbosity {
 	private int value;
 
 	/** Constructor For Enum
-	 * @param value One end of the number range
+	 * @param value Integer in Relation to Enum
 	*/
 	Verbosity(int value) {
 		// TODO Auto-generated constructor stub

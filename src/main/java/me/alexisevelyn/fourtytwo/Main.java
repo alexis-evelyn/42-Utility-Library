@@ -13,8 +13,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Main extends JavaPlugin {
 	// Event Listeners
 
-	/** Called When Enabling Plugin
-	*/
+	/** Called When Enabling Plugin */
 	@Override
     public void onEnable() {
 		// Register Commands
@@ -24,8 +23,7 @@ public class Main extends JavaPlugin {
 		getLogger().info("42 Utility Library has successfully started!!!");
 	}
 
-	/** Called When Disabling
-	*/
+	/** Called When Disabling Plugin */
 	@Override
     public void onDisable() {
 		getLogger().info("Thank you for using 42 Utility Library!!!");
