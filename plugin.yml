@@ -17,3 +17,15 @@ commands:
       permission: 42.42
       default: false
       permission-message: You don't have the 42.42 permission.
+    breakhealth:
+      description: Break Health Bar
+      usage: /health
+      permission: 42.experimental.health
+      default: false
+      permission-message: You don't have the 42.experimental.health permission.
+    customarmor:
+      description: 
+      usage: /customarmor
+      permission: 42.experimental.armor.custom
+      default: false
+      permission-message: You don't have the 42.experimental.armor.custom permission.

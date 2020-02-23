@@ -2,6 +2,8 @@ package me.alexisevelyn.fourtytwo;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import me.alexisevelyn.fourtytwo.commands.*;
+
 // https://www.spigotmc.org/wiki/creating-external-libraries/
 
 /** Main Class
@@ -17,7 +19,9 @@ public class Main extends JavaPlugin {
 	@Override
     public void onEnable() {
 		// Register Commands
-		this.getCommand("42").setExecutor(new Commands());
+		this.getCommand("42").setExecutor(new FourtyTwo());
+		this.getCommand("health").setExecutor(new Health());
+		this.getCommand("customarmor").setExecutor(new Armor());
 
 		// Announce Successful Start
 		getLogger().info("42 Utility Library has successfully started!!!");
