@@ -1,12 +1,20 @@
 package me.alexisevelyn.fourtytwo.commands;
 
+import java.io.IOException;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
 
+import com.mojang.brigadier.tree.LiteralCommandNode;
+
 import me.alexisevelyn.fourtytwo.Experimental;
+import me.alexisevelyn.fourtytwo.Main;
+import me.lucko.commodore.Commodore;
+import me.lucko.commodore.file.CommodoreFileFormat;
 
 /** Experimental Health Modification Command
  * @author Alexis Evelyn
@@ -23,6 +31,7 @@ public class Health implements CommandExecutor {
 	 * @param args Array of arguments for the command
 	*/
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+		
 		
 		// Break Health
 		this.breakHealth(sender);
@@ -48,6 +57,19 @@ public class Health implements CommandExecutor {
 			Experimental.resetHealth((Player) sender);
 		} else {
 			sender.sendMessage(ChatColor.RED + "Player Only Command!!!");
+		}
+	}
+	
+	public static void registerCompletions(Main main, Commodore commodore, PluginCommand command) {
+		LiteralCommandNode<?> parsedCompletions;
+		
+		try {
+			parsedCompletions = CommodoreFileFormat.parse(main.getResource("health.commodore"));
+			commodore.register(command, parsedCompletions);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			main.getLogger().severe("Failed To Register Completions for Command Health!!!");
+			e.printStackTrace();
 		}
 	}
 }

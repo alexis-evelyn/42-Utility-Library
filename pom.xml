@@ -20,7 +20,45 @@
 					<include>plugin.yml</include>
 				</includes>
 			</resource>
+			<resource>
+				<directory>./src/main/resources/</directory>
+				<includes>
+					<include>42.commodore</include>
+					<include>customarmor.commodore</include>
+					<include>health.commodore</include>
+				</includes>
+			</resource>
 		</resources>
+		
+		<plugins>
+	        <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-shade-plugin</artifactId>
+	            <version>3.2.1</version>
+	            <executions>
+	                <execution>
+	                    <phase>package</phase>
+	                    <goals>
+	                        <goal>shade</goal>
+	                    </goals>
+	                    <configuration>
+	                        <artifactSet>
+	                            <includes>
+	                                <include>me.lucko:commodore</include>
+	                            </includes>
+	                        </artifactSet>
+	                        <relocations>
+	                            <relocation>
+	                                <pattern>me.lucko.commodore</pattern>
+	                                <!-- vvv Replace with the package of your plugin vvv -->
+	                                <shadedPattern>me.alexisevelyn.fourtytwo.shaded.commodore</shadedPattern>
+	                            </relocation>
+	                        </relocations>
+	                    </configuration>
+	                </execution>
+	            </executions>
+	        </plugin>
+	    </plugins>
 	</build>
 
 	<repositories>
@@ -28,6 +66,10 @@
 			<id>papermc</id>
 			<url>https://papermc.io/repo/repository/maven-public/</url>
 		</repository>
+		<repository>
+	        <id>minecraft-repo</id>
+	        <url>https://libraries.minecraft.net/</url>
+    	</repository>
 	</repositories>
 
 	<dependencies>
@@ -37,5 +79,11 @@
 			<version>1.15.2-R0.1-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+	        <groupId>me.lucko</groupId>
+	        <artifactId>commodore</artifactId>
+	        <version>1.5</version>
+	        <scope>compile</scope>
+    </dependency>
 	</dependencies>
 </project>

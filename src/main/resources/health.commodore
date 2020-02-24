@@ -1,0 +1,13 @@
+health {
+  set {
+    user brigadier:string single_word {
+      health brigadier:integer;
+    }
+  }
+  break {
+    user brigadier:string single_word;
+  }
+  reset {
+    user brigadier:string single_word;
+  }
+}

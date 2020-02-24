@@ -1,12 +1,20 @@
 package me.alexisevelyn.fourtytwo.commands;
 
+import java.io.IOException;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
 
+import com.mojang.brigadier.tree.LiteralCommandNode;
+
 import me.alexisevelyn.fourtytwo.Experimental;
+import me.alexisevelyn.fourtytwo.Main;
+import me.lucko.commodore.Commodore;
+import me.lucko.commodore.file.CommodoreFileFormat;
 
 /** Experimental Armor Modification Command
  * @author Alexis Evelyn
@@ -36,6 +44,19 @@ public class Armor implements CommandExecutor {
 			Experimental.customArmor((Player) sender);
 		} else {
 			sender.sendMessage(ChatColor.RED + "Player Only Command!!!");
+		}
+	}
+	
+	public static void registerCompletions(Main main, Commodore commodore, PluginCommand command) {
+		LiteralCommandNode<?> parsedCompletions;
+		
+		try {
+			parsedCompletions = CommodoreFileFormat.parse(main.getResource("customarmor.commodore"));
+			commodore.register(command, parsedCompletions);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			main.getLogger().severe("Failed To Register Completions for Command CustomArmor!!!");
+			e.printStackTrace();
 		}
 	}
 }

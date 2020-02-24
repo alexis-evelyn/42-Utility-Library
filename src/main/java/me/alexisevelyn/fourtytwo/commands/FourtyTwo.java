@@ -1,10 +1,19 @@
 package me.alexisevelyn.fourtytwo.commands;
 
+import java.io.IOException;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
+
+import com.mojang.brigadier.tree.LiteralCommandNode;
+
+import me.alexisevelyn.fourtytwo.Main;
+import me.lucko.commodore.Commodore;
+import me.lucko.commodore.file.CommodoreFileFormat;
 
 /** Version Command From Library (Useful For Ensuring Plugin Loaded Properly)
  * @author Alexis Evelyn
@@ -32,6 +41,19 @@ public class FourtyTwo implements CommandExecutor {
 			sender.sendMessage(ChatColor.GOLD + "Hello Player!!!");
 		} else {
 			sender.sendMessage(ChatColor.GOLD + "Hello Console!!!");
+		}
+	}
+	
+	public static void registerCompletions(Main main, Commodore commodore, PluginCommand command) {
+		LiteralCommandNode<?> parsedCompletions;
+		
+		try {
+			parsedCompletions = CommodoreFileFormat.parse(main.getResource("42.commodore"));
+			commodore.register(command, parsedCompletions);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			main.getLogger().severe("Failed To Register Completions for Command 42!!!");
+			e.printStackTrace();
 		}
 	}
 }
