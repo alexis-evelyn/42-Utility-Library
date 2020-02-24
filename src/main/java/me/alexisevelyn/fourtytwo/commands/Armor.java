@@ -1,12 +1,15 @@
 package me.alexisevelyn.fourtytwo.commands;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginCommand;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
 import com.mojang.brigadier.tree.LiteralCommandNode;
@@ -22,8 +25,12 @@ import me.lucko.commodore.file.CommodoreFileFormat;
  * @version 0.0.1-Snapshot
  * @since 0.0.1-Snapshot
 */
-public class Armor implements CommandExecutor {
+public class Armor implements CommandExecutor, TabCompleter {
 	
+	public Armor(Main main) {
+		// TODO Auto-generated constructor stub
+	}
+
 	/** Checks For Specific Command and Executes It
 	 * @param sender The sender's object (CommandSender)
 	 * @param command The command to run
@@ -58,5 +65,11 @@ public class Armor implements CommandExecutor {
 			main.getLogger().severe("Failed To Register Completions for Command CustomArmor!!!");
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+		List<String> empty = Arrays.asList("");
+		return empty;
 	}
 }

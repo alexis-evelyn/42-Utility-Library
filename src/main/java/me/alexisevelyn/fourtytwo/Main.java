@@ -24,11 +24,26 @@ public class Main extends JavaPlugin {
 		PluginCommand commandHealth = this.getCommand("health");
 		PluginCommand commandArmor = this.getCommand("customarmor");
 		
+		// Instantiate Commands' Classes
+		FourtyTwo classFourtyTwo = new FourtyTwo(this);
+		Health classHealth = new Health(this);
+		Armor classArmor = new Armor(this);
+		
 		// Register Commands
 		try {
-			command42.setExecutor(new FourtyTwo());
-			commandHealth.setExecutor(new Health());
-			commandArmor.setExecutor(new Armor());
+			command42.setExecutor(classFourtyTwo);
+			commandHealth.setExecutor(classHealth);
+			commandArmor.setExecutor(classArmor);
+		} catch(NullPointerException e) {
+			getLogger().severe("The idiot of a developer, Alexis Evelyn, forgot to rename a command in plugin.yml!!! Some or all commands from this library will not work!!!");
+			e.printStackTrace();
+		}
+		
+		// Register Tab Completions
+		try {
+			command42.setTabCompleter(classFourtyTwo);
+			commandHealth.setTabCompleter(classHealth);
+			commandArmor.setTabCompleter(classArmor);
 		} catch(NullPointerException e) {
 			getLogger().severe("The idiot of a developer, Alexis Evelyn, forgot to rename a command in plugin.yml!!! Some or all commands from this library will not work!!!");
 			e.printStackTrace();
