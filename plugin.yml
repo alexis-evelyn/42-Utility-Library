@@ -6,7 +6,7 @@ author: Alexis Evelyn
 description: A Utility Library For Alexis' Plugins
 
 depend: []
-softdepend: []
+softdepend: [Essentials]
 
 dummy: https://www.spigotmc.org/wiki/plugin-yml/
 brigadier: https://github.com/lucko/commodore
@@ -30,3 +30,9 @@ commands:
       permission: 42.experimental.armor.custom
       default: false
       permission-message: You don't have the 42.experimental.armor.custom permission.
+    testnick:
+      description: 
+      usage: /testnicks
+      permission: 42.experimental.testnick
+      default: false
+      permission-message: You don't have the 42.experimental.testnick permission.

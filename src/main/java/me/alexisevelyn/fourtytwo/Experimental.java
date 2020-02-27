@@ -4,6 +4,10 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import com.earth2me.essentials.Essentials;
+import com.google.common.io.ByteArrayDataOutput;
+import com.google.common.io.ByteStreams;
+
 /** Game Breaking Functions
  * @author Alexis Evelyn
  * @author alexisevelyn.me
@@ -11,7 +15,6 @@ import org.bukkit.entity.Player;
  * @since 0.0.1-Snapshot
 */
 public class Experimental {
-
 	/** Make the player's health bar disappear
 	 * @param player The player to modify
 	*/
