@@ -43,9 +43,11 @@
 	                        <goal>shade</goal>
 	                    </goals>
 	                    <configuration>
+							<createDependencyReducedPom>false</createDependencyReducedPom>
 	                        <artifactSet>
 	                            <includes>
 	                                <include>me.lucko:commodore</include>
+									<include>org.bstats:bstats-bukkit</include>
 	                            </includes>
 	                        </artifactSet>
 	                        <relocations>
