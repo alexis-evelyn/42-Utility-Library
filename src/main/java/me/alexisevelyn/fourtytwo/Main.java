@@ -2,6 +2,7 @@ package me.alexisevelyn.fourtytwo;
 
 import org.bukkit.Bukkit;
 // Bukkit Imports
+import org.bukkit.ChatColor;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -21,9 +22,15 @@ import me.lucko.commodore.CommodoreProvider;
 // Essentials Imports
 import net.ess3.api.events.*;
 
+// bStats Imports
+import org.bstats.bukkit.Metrics;
+
 // https://www.spigotmc.org/wiki/creating-external-libraries/
 
 /** Main Class
+ *
+ * <p>Source Code: <a href="https://github.com/alexis-evelyn/42-Utility-Library">https://github.com/alexis-evelyn/42-Utility-Library</a></p>
+ *
  * @author Alexis Evelyn
  * @author alexisevelyn.me
  * @version 0.0.1-Snapshot
@@ -44,20 +51,17 @@ public class Main extends JavaPlugin implements Listener {
 		PluginCommand command42 = this.getCommand("42");
 		PluginCommand commandHealth = this.getCommand("health");
 		PluginCommand commandArmor = this.getCommand("customarmor");
-		PluginCommand commandTestNick = this.getCommand("testnick");
 		
 		// Instantiate Commands' Classes
 		FourtyTwo classFourtyTwo = new FourtyTwo(this);
 		Health classHealth = new Health(this);
 		Armor classArmor = new Armor(this);
-		TestNick classTestNick = new TestNick(this, this.nick);
 		
 		// Register Commands
 		try {
 			command42.setExecutor(classFourtyTwo);
 			commandHealth.setExecutor(classHealth);
 			commandArmor.setExecutor(classArmor);
-			commandTestNick.setExecutor(classTestNick);
 		} catch(NullPointerException e) {
 			getLogger().severe("The idiot of a developer, Alexis Evelyn, forgot to rename a command in plugin.yml!!! Some or all commands from this library will not work!!!");
 			e.printStackTrace();
@@ -68,7 +72,6 @@ public class Main extends JavaPlugin implements Listener {
 			command42.setTabCompleter(classFourtyTwo);
 			commandHealth.setTabCompleter(classHealth);
 			commandArmor.setTabCompleter(classArmor);
-			commandTestNick.setTabCompleter(classTestNick);
 		} catch(NullPointerException e) {
 			getLogger().severe("The idiot of a developer, Alexis Evelyn, forgot to rename a command in plugin.yml!!! Some or all commands from this library will not work!!!");
 			e.printStackTrace();
@@ -84,7 +87,6 @@ public class Main extends JavaPlugin implements Listener {
 	            FourtyTwo.registerCompletions(this, commodore, command42);
 	            Health.registerCompletions(this, commodore, commandHealth);
 	            Armor.registerCompletions(this, commodore, commandArmor);
-	            TestNick.registerCompletions(this, commodore, commandTestNick);
 	        } else {
 	        	getLogger().warning("Brigadier is Unsupported!!! Tab Completions will not work!!! Please use Minecraft 1.13+ For Tab Completions!!!");
 	        }
@@ -104,7 +106,18 @@ public class Main extends JavaPlugin implements Listener {
 		} else {
 			getLogger().warning("Bungeecord Support Will Not Work!!!");
 		}
-		
+
+		// TODO: -----------------------------------------------------------------------------
+		// bStats Enabling Code
+		int pluginId = 6696;
+		Metrics metrics = new Metrics(this, pluginId);
+
+		// Optional: Add custom charts
+		// metrics.addCustomChart(new Metrics.SimplePie("chart_id", () -> "My value"));
+
+		getLogger().info(ChatColor.GOLD  + "bStats Enabled: " + metrics.isEnabled());
+		// TODO: -----------------------------------------------------------------------------
+
 		// Announce Successful Start
 		getLogger().info("42 Utility Library has successfully started!!!");
 	}

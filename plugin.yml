@@ -30,9 +30,3 @@ commands:
       permission: 42.experimental.armor.custom
       default: false
       permission-message: You don't have the 42.experimental.armor.custom permission.
-    testnick:
-      description: 
-      usage: /testnicks
-      permission: 42.experimental.testnick
-      default: false
-      permission-message: You don't have the 42.experimental.testnick permission.

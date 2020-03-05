@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"me.alexisevelyn.fourtytwo"},{"l":"me.alexisevelyn.fourtytwo.commands"},{"l":"me.alexisevelyn.fourtytwo.debug"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"me.alexisevelyn.fourtytwo"},{"l":"me.alexisevelyn.fourtytwo.commands"},{"l":"me.alexisevelyn.fourtytwo.debug"},{"l":"me.alexisevelyn.hellsmyhome"},{"l":"me.alexisevelyn.paperwild"}]

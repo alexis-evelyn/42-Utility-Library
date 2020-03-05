@@ -12,14 +12,14 @@ import org.bukkit.ChatColor;
 public class Chat {
 	/** Colorizes and Sends A Message to the Specified Sender (Player, Console, or Command Block)
 	 * @param sender The sender's object (CommandSender)
-	 * @param message The message formatted with Mojang Color Codes, but with &amp; instead of §
+	 * @param message The message formatted with Mojang Color Codes, but with &amp; instead of &#xA7;
 	*/
 	public static void tell(CommandSender sender, String message) {
         sender.sendMessage(colorize(message));
     }
 
 	/** Colorizes A Messag
-	 * @param message The message formatted with Mojang Color Codes, but with &amp; instead of §
+	 * @param message The message formatted with Mojang Color Codes, but with &amp; instead of &#xA7;
 	 * @return Colorized Message
 	*/
     public static String colorize(final String message) {
