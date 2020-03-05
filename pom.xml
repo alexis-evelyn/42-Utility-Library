@@ -12,8 +12,33 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
+	<profiles>
+		<profile>
+			<id>release</id>
+			<build>
+				<defaultGoal>clean source:jar javadoc:jar deploy</defaultGoal>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.6</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
 	<build>
-		<defaultGoal>clean package install</defaultGoal>
+		<defaultGoal>clean install</defaultGoal>
 		<resources>
 			<resource>
 				<directory>./</directory>
@@ -67,6 +92,14 @@
 	            </executions>
 	        </plugin>
 	    </plugins>
+
+		<extensions>
+			<extension>
+				<groupId>io.packagecloud.maven.wagon</groupId>
+				<artifactId>maven-packagecloud-wagon</artifactId>
+				<version>0.0.6</version>
+			</extension>
+		</extensions>
 	</build>
 
 	<repositories>
@@ -114,4 +147,15 @@
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
+
+	<distributionManagement>
+		<repository>
+			<id>packagecloud-minecraft</id>
+			<url>packagecloud+https://packagecloud.io/AlexisEvelyn/Minecraft</url>
+		</repository>
+		<snapshotRepository>
+			<id>packagecloud-minecraft</id>
+			<url>packagecloud+https://packagecloud.io/AlexisEvelyn/Minecraft</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>
